@@ -185,7 +185,7 @@ This is the last project toward Udacity Full Stack Web Developer Nanodegree. In 
    import sys
    import logging
    logging.basicConfig(stream=sys.stderr)
-   sys.path.insert(0,"/var/www/nuevoMexico/")
+   sys.path.insert(0,"/var/www/catalog/")
 
    from nuevoMexico import app as application
    application.secret_key = 'super_secret_key'
