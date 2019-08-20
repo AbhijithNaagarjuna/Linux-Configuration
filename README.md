@@ -1,9 +1,8 @@
 # Linux-Server-Configuration-Udacity-Full-Stack-Nanodegree-Project
-This is the last project toward Udacity Full Stack Web Developer Nanodegree. In this project, the [Catalog Web Application](https://github.com/yiyupan/Catalog-App-Udacity-Full-Stack-Nanodegree) from project 3 will be hosted by a Ubuntu Linux server on an Amazon Lightsail instance. A series of instructions will be presented below. You can visit http://18.218.99.181/ for the website deployed. 
+This is the last project toward Udacity Full Stack Web Developer Nanodegree. In this project, the [Catalog Web Application](https://github.com/AbhijithNaagarjuna/ItemsCatalog) from project 3 will be hosted by a Ubuntu Linux server on an Amazon Lightsail instance. A series of instructions will be presented below. You can visit http://13.233.212.34/ for the website deployed. 
 
-Above link is now unavailable because I have graduated from the nanodegree program.
 
-* Public IP address: 18.218.99.181
+* Public IP address: 13.233.212.34
 * SSH port: 2200
 ## Start a new Ubuntu Linux Server instance on Amazon Lightsail
 1. Create an AWS account
@@ -19,7 +18,7 @@ Above link is now unavailable because I have graduated from the nanodegree progr
 2. Create a new file named **lightsail_key.rsa** under ~/.ssh folder on your local machine
 3. Copy and paste content from downloaded private key file to **lightsail_key.rsa**
 4. Set file permission as owner only : `$ chmod 600 ~/.ssh/lightsail_key.rsa`
-5. SSH into the instance: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@18.218.99.181`
+5. SSH into the instance: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@13.233.212.34`
 
 ## Update all currently installed packages
 1. Run `sudo apt-get update` to update packages
@@ -65,7 +64,7 @@ Above link is now unavailable because I have graduated from the nanodegree progr
     * Copy the public key to this _authorized_keys_ file on the virtual machine and save
 3. Run `chmod 700 .ssh` and `chmod 644 .ssh/authorized_keys` on your virtual machine to change file permission
 4. Restart SSH: `$ sudo service ssh restart`
-5. Now you are able to login in as grader: `$ ssh -i ~/.ssh/grader_key -p 2200 grader@18.218.99.181`
+5. Now you are able to login in as grader: `$ ssh -i ~/.ssh/grader_key -p 2200 grader@13.233.212.34
 6. You will be asked for grader's password. To unable it, open configuration file again: `$ sudo nano /etc/ssh/sshd_config`
 7. Change `PasswordAuthentication yes` to **no**
 8. Restart SSH: `$ sudo service ssh restart`
@@ -76,7 +75,7 @@ Above link is now unavailable because I have graduated from the nanodegree progr
 
 ## Install and configure Apache
 1. Install **Apache**: `$ sudo apt-get install apache2`
-2. Go to http://18.218.99.181/, if Apache is working correctly, a **Apache2 Ubuntu Default Page** will show up
+2. Go to http://13.233.212.34/, if Apache is working correctly, a **Apache2 Ubuntu Default Page** will show up
 
 ## Install and configure Python mod_wsgi
 1. Install the **mod_wsgi** package: `$ sudo apt-get install libapache2-mod-wsgi python-dev`
@@ -132,7 +131,7 @@ Above link is now unavailable because I have graduated from the nanodegree progr
 5. Change the ownership: `$ sudo chown -R ubuntu:ubuntu catalog/`
 6. CD to `/var/www/catalog/catalog`
 7. Change file **application.py** to **__init__.py**: `$ mv application.py __init__.py`
-8. Change line `app.run(host='0.0.0.0', port=8000)` to `app.run()` in **__init__.py** file
+8. Change line `app.run(host='0.0.0.0', port=8000)` to `app.run(host='13.233.212.34', port = 80)` in **__init__.py** file
 
 ## Edit client_secrets.json file
 1. Create a new project on Google API Console and download `client_scretes.json` file
@@ -156,8 +155,8 @@ Above link is now unavailable because I have graduated from the nanodegree progr
 2. Add the following to the file:
 ```
    <VirtualHost *:80>
-		ServerName XX.XX.XX.XX
-		ServerAdmin admin@xx.xx.xx.xx
+		ServerName 13.233.212.34
+		ServerAdmin admin@13.233.212.34
 		WSGIScriptAlias / /var/www/catalog/catalog.wsgi
 		<Directory /var/www/catalog/catalog/>
 			Order allow,deny
@@ -204,7 +203,7 @@ Above link is now unavailable because I have graduated from the nanodegree progr
 1. Run `$ sudo python database_setup.py`
 2. Run `$ sudo python lotsofitems.py`
 3. Restart **Apache**: `$ sudo service apache2 reload`
-4. Now follow the link to http://18.218.99.181/  the application should be runing online
+4. Now follow the link to http://13.233.212.34/  the application should be runing online
 5. If internal errors occur: check the [Apache error file](https://www.a2hosting.com/kb/developer-corner/apache-web-server/viewing-apache-log-files)
 
 ## Sources
