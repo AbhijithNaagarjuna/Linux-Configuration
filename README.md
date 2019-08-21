@@ -1,8 +1,8 @@
 # Linux-Server-Configuration-Udacity-Full-Stack-Nanodegree-Project
-This is the last project toward Udacity Full Stack Web Developer Nanodegree. In this project, the [Catalog Web Application](https://github.com/AbhijithNaagarjuna/ItemsCatalog) from project 3 will be hosted by a Ubuntu Linux server on an Amazon Lightsail instance. A series of instructions will be presented below. You can visit http://13.233.212.34/ for the website deployed. 
+This is the last project toward Udacity Full Stack Web Developer Nanodegree. In this project, the [Catalog Web Application](https://github.com/AbhijithNaagarjuna/ItemsCatalog) from project 3 will be hosted by a Ubuntu Linux server on an Amazon Lightsail instance. A series of instructions will be presented below. You can visit http://13.127.20.7/ for the website deployed. 
 
 
-* Public IP address: 13.233.212.34
+* Public IP address: 13.127.20.7
 * SSH port: 2200
 ## Start a new Ubuntu Linux Server instance on Amazon Lightsail
 1. Create an AWS account
@@ -18,7 +18,7 @@ This is the last project toward Udacity Full Stack Web Developer Nanodegree. In 
 2. Create a new file named **lightsail_key.rsa** under ~/.ssh folder on your local machine
 3. Copy and paste content from downloaded private key file to **lightsail_key.rsa**
 4. Set file permission as owner only : `$ chmod 600 ~/.ssh/lightsail_key.rsa`
-5. SSH into the instance: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@13.233.212.34`
+5. SSH into the instance: `$ ssh -i ~/.ssh/lightsail_key.rsa ubuntu@13.127.20.7`
 
 ## Update all currently installed packages
 1. Run `sudo apt-get update` to update packages
@@ -64,10 +64,41 @@ This is the last project toward Udacity Full Stack Web Developer Nanodegree. In 
     * Copy the public key to this _authorized_keys_ file on the virtual machine and save
 3. Run `chmod 700 .ssh` and `chmod 644 .ssh/authorized_keys` on your virtual machine to change file permission
 4. Restart SSH: `$ sudo service ssh restart`
-5. Now you are able to login in as grader: `$ ssh -i ~/.ssh/grader_key -p 2200 grader@13.233.212.34
+5. Now you are able to login in as grader: `$ ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@13.127.20.7
 6. You will be asked for grader's password. To unable it, open configuration file again: `$ sudo nano /etc/ssh/sshd_config`
 7. Change `PasswordAuthentication yes` to **no**
 8. Restart SSH: `$ sudo service ssh restart`
+9. Private key is `-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,08C4F5488A6B7E8B19F21E793FE77A96
+
+LfzkgOsZiNZGG+qtDPEOgz2YfbjU0EQewzz5jP0Yb1F7fCYFbEdCOPZGEepfJyZX
+iruO0YF8lMm5Y9p2JEfenDLioKR2sDi98Crm6HLBOIA4b6M8QK6mVv2/Hu+JRsan
+nqWjbKuYSGrtFaL/bMnvqjYZTDdUEeieQJDlbfCiL+hAl1xu3db1dfL1TbOEGr97
+v6r3GHVN0SaFQEmcq94XVxS4AKrTiDXsj43Sz+lfEYJ7hzagTdYf80Mrpz0JNTMp
+R22q1/9XhD6bNbn5I1kZ/q0EK1IBSSbdIYO2aLxtC6OCqYxoJltt1VDNtZzzYUhY
+ljBE/LKrwrwevBX4/JzF55nWAlr3+xYKYNLt4V95Tu7yWxVrFnJM+cO1xe0XGtU0
+DcqmTXolN7JEVOId/XobZclDSfeHjipmkr7LCuTOloyc6cH8i2nApY20wlsuO9or
+1h7vLsP4Kdb2biqhzfjPkpvQquzfMa3PM0adsHzIV196J7attk8t59mkuJTBhpLq
+FhvD3Mq2jgoOdmG8vlzgoM6IPq0RTK8OGP/MxLNeoSIIiKrK9qBpFu2h0aJ2Ufyv
+19tbwRPXDR4IOd5Qmu+WlnWofR9Zbfk80OIt1yvnPUwH1kd+XNrvHpdM2K243SbD
+KhYN3EWZbFgZAMAI3dAg79LeWTLQrMi/0n26Fjc+UJSRFdl9/7UvKfqT85bS0ua3
+7vKMjdEJsM+drcI3sA2X6jXMbgVmDbxPZ8yHO/CyvWoiIRnJjcj9ql5/fzS1OxY/
+x+8QSCaifA6h/JEHXWbLX42tuVbJrlwJn3eagQfPLzWTxd8JdfAiVy96CSBju5I7
+N7is16jAEjliYLAjg/VxxNUEflT9d/y+I2pEdjmUpQtNUBbICJx5Q1wIwfXsU9Ba
+P59KEYbkxjXwdrBg2GHGi2sA7DRlB9es8JMUYQyNqwQ/MwvPkk1occAQffOjuuCl
+KmJdnMto2+2iswqvW+RXIR5NVOMdOz+gICOpIIlizsuP++10xFXCJ/hI3BmuAZHg
+dmTHx14CnPHXrB31fnliWElJCvrHNryJzG+U8gaQJC0YvS4XTcD9swF0jO7JkJxx
+/EIuwZsjIMvHiU+ySVeYmkx2QVF1nKQqCLP94rGgRf+ShljSC18kQLSjxES1pQ8l
+jgfw8HW2Qr7yehnYsjwLcHk9vqI4u+uoglcP2m0RI84+ZOI1pM3VKateXK+kWA3Q
+76LleULm1Uy/5AXruqGqWjZ4/XXoITqAO3xi8rbK0cZq6GseU25SVtTGVTT7/WZ/
+MOLBvjY5gJoz3AzHUpKmxSUyjJ4Utl8bjYg5kU/KDYn2ONB35uezgWUdSQoLaxj2
+b25Nkpts/HBPU/UHkQE5KTl58VWcoL3W5ZLVqLZKksdqOxhhqQZdcJFy/QMaU46o
+nMZxrLDoKcv3vEg7fAb3TJKleS3lY06U4Ofp6DcfhqcB5UWf0fNvUmwNzjc7LTte
+jo0MvOsPBgtFsOqE6L4qJrPIIPNK68KBGXc0M+AmEf6PArLfb92cWKaQV8S/c3uG
+Nw5LbfI3cvCmyZoc+Pl+TagvIzneJZ3wDYK+aGKxUlENatIqGTH/1GWYLYf+L2HY
+-----END RSA PRIVATE KEY-----
+`
 
 ## Configure the local timezone to UTC
 1. Run `$ sudo dpkg-reconfigure tzdata`
@@ -75,7 +106,7 @@ This is the last project toward Udacity Full Stack Web Developer Nanodegree. In 
 
 ## Install and configure Apache
 1. Install **Apache**: `$ sudo apt-get install apache2`
-2. Go to http://13.233.212.34/, if Apache is working correctly, a **Apache2 Ubuntu Default Page** will show up
+2. Go to http://13.127.20.7/, if Apache is working correctly, a **Apache2 Ubuntu Default Page** will show up
 
 ## Install and configure Python mod_wsgi
 1. Install the **mod_wsgi** package: `$ sudo apt-get install libapache2-mod-wsgi python-dev`
@@ -155,8 +186,8 @@ This is the last project toward Udacity Full Stack Web Developer Nanodegree. In 
 2. Add the following to the file:
 ```
    <VirtualHost *:80>
-		ServerName 13.233.212.34
-		ServerAdmin admin@13.233.212.34
+		ServerName 13.127.20.7
+		ServerAdmin admin@13.127.20.7
 		WSGIScriptAlias / /var/www/catalog/catalog.wsgi
 		<Directory /var/www/catalog/catalog/>
 			Order allow,deny
@@ -203,7 +234,7 @@ This is the last project toward Udacity Full Stack Web Developer Nanodegree. In 
 1. Run `$ sudo python database_setup.py`
 2. Run `$ sudo python lotsofitems.py`
 3. Restart **Apache**: `$ sudo service apache2 reload`
-4. Now follow the link to http://13.233.212.34/  the application should be runing online
+4. Now follow the link to http://13.127.20.7/  the application should be runing online
 5. If internal errors occur: check the [Apache error file](https://www.a2hosting.com/kb/developer-corner/apache-web-server/viewing-apache-log-files)
 
 ## Sources
